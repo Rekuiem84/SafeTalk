@@ -1,10 +1,11 @@
 <?php
 
 
-class Db{
+class Db
+{
 
 
-/**
+    /**
      * Pour se connecter à la BDD
      * 
      * Paramètres : 
@@ -15,28 +16,25 @@ class Db{
      * Retour : objet PDO ($db) OU erreur
      * 
      */
-    public function dbCo($dbName, $login, $password){
-        try{
-
-            $db = new PDO("mysql:host=localhost;
-                    dbname=".$dbName.";
+    public function dbCo($dbName, $login, $password)
+    {
+        try {
+            $db = new PDO(
+                "mysql:host=localhost;
+                    dbname=" . $dbName . ";
                     charset=utf8",
-                    $login,
-                    $password
-                );
-
+                $login,
+                $password
+            );
             return $db;
-
-        }catch(Exception $e){
-
-            die("Erreur : ".$e->getMessage());
-
+        } catch (Exception $e) {
+            die("Erreur : " . $e->getMessage());
         }
     }
 
-    
 
-    
+
+
 
     /**
      * Pour créer une requête SQL sans paramètre
@@ -48,7 +46,8 @@ class Db{
      * Retour : array
      * 
      */
-    public function SQLWithoutParam($sql,$db){
+    public function SQLWithoutParam($sql, $db)
+    {
         $response = $db->query($sql);
 
         $data = $response->fetchAll();
@@ -57,7 +56,7 @@ class Db{
 
         return $data;
     }
-    
+
 
     /**
      * Pour créer une requête SQL avec paramètres
@@ -70,15 +69,12 @@ class Db{
      * Retour : array
      * 
      */
-    public function SQLWithParam($sql,$param,$db){
+    public function SQLWithParam($sql, $param, $db)
+    {
         $response = $db->prepare($sql);
         $response->execute($param);
 
         $data = $response->fetchAll();
         return $data;
     }
-
 }
-
-
-    

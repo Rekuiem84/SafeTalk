@@ -1,0 +1,55 @@
+/* Général */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+:root {
+	--color-text: hsl(0, 0, 0);
+	--color-background: hsl(0, 0, 100%);
+	--color-accent: hsl(164, 82%, 29%);
+
+	--font-stack: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+		Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+
+	--font-size-xl: clamp(3rem, 5vw, 4rem);
+	--font-size-l: clamp(2rem, 5vw, 2.5rem);
+	--font-size-m: clamp(1.5rem, 5vw, 1.65rem);
+	--font-size-s: clamp(0.8rem, 5vw, 1rem);
+	--font-size-xs: clamp(0.6rem, 5vw, 0.8rem);
+	--font-size-text: clamp(1rem, 5vw, 1.2rem);
+}
+body {
+	font-family: sans-serif;
+}
+img {
+	max-width: 100%;
+}
+ul {
+	list-style-type: none;
+}
+a {
+	color: inherit;
+	text-decoration: none;
+}
+/* Utility */
+.hidden {
+	display: none;
+}
+.bold {
+	font-weight: bold;
+}
+.underline {
+	text-decoration: underline;
+}
+.section-padding-l {
+	padding-inline: clamp(1rem, 8vw, 2rem);
+}
+.section-padding-m {
+	padding-inline: clamp(2rem, 8vw, 3rem);
+}
+.section-padding-s {
+	padding-inline: clamp(3rem, 8vw, 4rem);
+}
