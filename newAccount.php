@@ -1,6 +1,7 @@
 <?php
 require "./classes/db.php";
 require "./classes/form.php";
+require "./classes/user.php";
 require "./classes/login.php";
 
 session_start();
@@ -14,21 +15,18 @@ $message = "";
 if ($form->isSubmitted()) {
   $email = $_POST["email"];
   $mdp = $_POST["password"];
-  if ($form->isValidLoginForm()) {
-    if ($login->checkAccess($email, $mdp)) {
-      var_dump($_POST);
-      $userData = $form->getUserData($email)[0];
-      // ajouter un array avec toutes les infos du man avec une fonction de membre
-      $_SESSION["is_connected"] = true;
-      $_SESSION["is_admin"] = boolval($userData["is_admin"]);
-      $_SESSION["membre_id"] = $userData["id"];
-      $_SESSION["membre_prenom"] = $userData["prenom"];
-      $_SESSION["membre_nom"] = $userData["nom"];
-      $_SESSION["membre_email"] = $userData["email"];
-      $login->connect();
+  $params = [$email, $mdp];
+  if ($form->isValidAnyForm($params)) {
+
+    // Vérifie si l'email existe PAS déjà
+    if (!$login->userExists($email)) {
+      // Ajouter un nouvel utilisateur
+      $user = new User($email, $mdp, 0);
+      $user->insertMembre($email, $mdp);
+      $message = "Votre compte a été créé avec succès";
+      header("Location: newAccount.php?success");
     } else {
-      $message = "Email ou mot de passe incorrect";
-      header("Location: loginForm.php?error");
+      $message = "Cet email est déjà utilisé.";
     }
   } else {
     $errors = $form->getErrorsLogin();
@@ -43,7 +41,7 @@ if ($form->isSubmitted()) {
   <meta charset='UTF-8'>
   <meta http-equiv='X-UA-Compatible' content='IE=edge'>
   <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-  <title>Authentification — SafeTalk</title>
+  <title>Créer un compte — SafeTalk</title>
   <meta name='description' content="Page d'authentification de SafeTalk">
   <link rel='stylesheet' href='./assets/style/style.css' />
   <link rel='shortcut icon' type='image/png' href='' />
@@ -53,7 +51,7 @@ if ($form->isSubmitted()) {
 <body>
   <main>
     <div class="form-cont">
-      <h1>Log in</h1>
+      <h1>Créer un compte</h1>
       <form method="post">
         <div><label for="email">Email</label><input type="email" name="email" id="email" value="<?php if ($form->isSubmitted()) {
                                                                                                   if (!empty($_POST["email"])) {
@@ -73,19 +71,18 @@ if ($form->isSubmitted()) {
                 }
               } ?></p>
         </div>
-        <button>Se connecter</button>
+        <button>Valider</button>
       </form>
     </div>
     <?php
-    if (isset($_GET["error"])) :
+    if (isset($_GET["success"])) :
     ?>
-      <p>Email ou mot de passe incorrect</p>
-      <p><label for="email">Réessaie</label> ou <a href="newAccount.php">crée un compte</a></p>
+      <p>Compte crée avec succès</p>
+      <p><a href="loginForm.php">Se connecter</a></p>
     <?php
     endif;
     ?>
   </main>
-
 </body>
 
 </html>

@@ -33,19 +33,33 @@ class Login
         $this->mdp = $mdp;
     }
 
-    /* Doit renvoyer un bool*/
-    public function checkAccess($email, $mdp)
+
+    /* Check dans la DB s'il y a une correspondance entre $email et sha1($mdp) */
+    public function checkAccess($email, $mdp): bool
     {
         $db = new Db;
-        $co = $db->dbCo("panza", "root", "root");
+        $co = $db->dbCo("SafeTalk", "root", "root");
 
-        $sql = "SELECT `email`, SHA1(`mot_de_passe`) mot_de_passe FROM `membre` WHERE email = ? AND mot_de_passe = ?";
+        $sql = "SELECT `email`, SHA1(`password`) password FROM `user` WHERE `email` = ? AND `password` = ?";
         $param = [$email, sha1($mdp)];
         $result = $db->SQLWithParam($sql, $param, $co);
         return !empty($result);
     }
 
-    public function connect()
+    /* Check dans la DB si le mail existe déjà */
+    public function userExists($email): bool
+    {
+        $db = new Db;
+        $co = $db->dbCo("SafeTalk", "root", "root");
+
+        $sql = "SELECT `email` FROM `user` WHERE email = ?";
+        $param = [$email];
+        $result = $db->SQLWithParam($sql, $param, $co);
+        return !empty($result);
+    }
+
+    // Redirige vers la page de dashboard
+    public function connect(): void
     {
         header("Location: dashboard.php");
     }

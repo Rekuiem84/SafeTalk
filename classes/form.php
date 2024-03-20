@@ -19,7 +19,7 @@ class Form
     {
         $errors = [
             "email" => empty($_POST["email"]) ? "Merci de renseigner votre email" : "",
-            "mdp" => empty($_POST["password"]) ? "Merci de renseigner votre mot de passe" : ""
+            "password" => empty($_POST["password"]) ? "Merci de renseigner votre mot de passe" : ""
         ];
         return $errors;
     }
@@ -40,9 +40,9 @@ class Form
     public function getUserData($email): array
     {
         $db = new Db;
-        $co = $db->dbCo("panza", "root", "root");
+        $co = $db->dbCo("SafeTalk", "root", "root");
 
-        $sql = "SELECT * FROM `membre` WHERE email = ?";
+        $sql = "SELECT * FROM `user` WHERE email = ?";
         $param = [$email];
         $result = $db->SQLWithParam($sql, $param, $co);
         return $result;
