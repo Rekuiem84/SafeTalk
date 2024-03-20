@@ -1,3 +1,138 @@
+:root {
+	--color-text: hsl(0, 0, 0);
+	--color-background: hsl(0, 0%, 100%);
+	--color-accent: hsl(164, 83%, 38%);
+	--color-dark-gray: hsl(0, 0%, 36%);
+	--color-error: hsl(6, 90%, 51%);
+
+	--font-stack: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+		Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+
+	--font-size-xl: clamp(3rem, 5vw, 4rem);
+	--font-size-l: clamp(2rem, 5vw, 2.5rem);
+	--font-size-m: clamp(1.5rem, 5vw, 1.65rem);
+	--font-size-s: clamp(0.8rem, 5vw, 1rem);
+	--font-size-xs: clamp(0.6rem, 5vw, 0.8rem);
+	--font-size-text: clamp(1rem, 5vw, 1.2rem);
+}
 /* Header */
 /* Footer */
 /* Login */
+.registration {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+
+	& header {
+		padding: 2rem 2.65rem;
+	}
+	& header .logo-cont {
+		width: min(60%, 220px);
+	}
+	& main {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap-reverse;
+		margin-block: auto;
+	}
+	& .illustration-cont {
+		width: min(100%, 780px);
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		display: flex;
+		pointer-events: none;
+	}
+	& .form-cont {
+		width: min(100%, 700px);
+		z-index: 2;
+		margin-left: auto;
+	}
+	& form {
+		padding: 2em 2em 1em;
+		background-color: #ffffffdf;
+		backdrop-filter: blur(4px);
+		width: min(40ch, 100%);
+		margin-inline: auto;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		gap: 3em;
+		border-radius: 0.75em;
+		color: var(--color-dark-gray);
+	}
+	& h1 {
+		font-size: 2.4rem;
+		font-weight: 700;
+	}
+	& label {
+		cursor: pointer;
+	}
+	& label,
+	& input {
+		font-size: 1.35rem;
+		transition: 0.1s ease-in-out;
+	}
+	& i {
+		color: inherit;
+		font-size: 1.1em;
+		margin-right: 0.85em;
+		vertical-align: text-bottom;
+	}
+	& input {
+		border: 3px solid transparent;
+		border-bottom-color: var(--color-dark-gray);
+		outline: none;
+		background: none;
+	}
+	& input:focus {
+		border-bottom-color: var(--color-accent);
+	}
+	& label:has(~ input:focus) {
+		color: var(--color-accent);
+	}
+	& .field-cont {
+		display: grid;
+		gap: 1em;
+	}
+	& .button-cont {
+		display: flex;
+		justify-content: center;
+	}
+	& button {
+		cursor: pointer;
+		background-color: var(--color-accent);
+		color: var(--color-background);
+		border: none;
+		border-radius: 0.5rem;
+		font-size: 1.25rem;
+		padding: 0.7em 1.45em;
+		margin-inline: auto;
+		transition: 0.15s ease-in-out;
+		outline: 3px solid transparent;
+
+		&:is(:hover, :focus-visible) {
+			scale: 1.05;
+		}
+		&:focus-visible {
+			outline: 3px solid var(--color-accent);
+			outline-offset: 3px;
+		}
+	}
+	.data-form-result :where(p, label) {
+		color: inherit;
+		font-size: 1rem;
+		cursor: pointer;
+	}
+	.data-form-result p {
+		position: relative;
+		top: -1rem;
+		text-align: center;
+	}
+	[data-error] {
+		color: var(--color-error);
+	}
+	[data-success] {
+		color: var(--color-accent);
+	}
+}

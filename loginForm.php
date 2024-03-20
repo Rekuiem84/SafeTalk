@@ -45,45 +45,53 @@ if ($form->isSubmitted()) {
   <meta name='viewport' content='width=device-width, initial-scale=1.0'>
   <title>Authentification — SafeTalk</title>
   <meta name='description' content="Page d'authentification de SafeTalk">
+  <link rel='stylesheet' href='./assets/style/general.css' />
   <link rel='stylesheet' href='./assets/style/style.css' />
   <link rel='shortcut icon' type='image/png' href='' />
   <script src='' defer></script>
+  <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
-<body>
-  <main>
+<body class="registration">
+  <header>
+    <div class="logo-cont"><img src="./assets/images/logo-long.png" alt="logo"></div>
+  </header>
+  <main class="section-padding-m">
+    <div class="illustration-cont"><img src="./assets/images/login-illustration.svg" alt="illustration"></div>
     <div class="form-cont">
-      <h1>Log in</h1>
       <form method="post">
-        <div><label for="email">Email</label><input type="email" name="email" id="email" value="<?php if ($form->isSubmitted()) {
-                                                                                                  if (!empty($_POST["email"])) {
-                                                                                                    echo $_POST["email"];
-                                                                                                  }
-                                                                                                } ?>">
+        <h1 class="underline">Se connecter</h1>
+        <div class="field-cont"><label for="email"><i class='bx bxs-user'></i>Email</label><input type="email" name="email" id="email" value="<?php if ($form->isSubmitted()) {
+                                                                                                                                                if (!empty($_POST["email"])) {
+                                                                                                                                                  echo $_POST["email"];
+                                                                                                                                                }
+                                                                                                                                              } ?>">
           <p><?php if ($form->isSubmitted()) {
                 if (!($form->isValidLoginForm($params))) {
                   echo $errors["email"];
                 }
               } ?></p>
         </div>
-        <div><label for="password">Mot de passe</label><input type="password" name="password" id="password">
+        <div class="field-cont"><label for="password"><i class='bx bxs-lock-alt'></i>Mot de passe</label><input type="password" name="password" id="password">
           <p><?php if ($form->isSubmitted()) {
                 if (!($form->isValidLoginForm($params))) {
                   echo $errors["password"];
                 }
               } ?></p>
         </div>
-        <button>Se connecter</button>
+        <div class="button-cont"><button>Se connecter</button></div>
+        <?php
+        if (isset($_GET["error"])) :
+        ?>
+          <div data-error class="data-form-result">
+            <p>Email ou mot de passe incorrect</p>
+            <p><label for="email" class="underline">Réessaie</label> ou <a href="newAccount.php" class="underline">crée un compte</a></p>
+          </div>
+        <?php
+        endif;
+        ?>
       </form>
     </div>
-    <?php
-    if (isset($_GET["error"])) :
-    ?>
-      <p>Email ou mot de passe incorrect</p>
-      <p><label for="email">Réessaie</label> ou <a href="newAccount.php">crée un compte</a></p>
-    <?php
-    endif;
-    ?>
   </main>
 
 </body>
