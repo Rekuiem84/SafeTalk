@@ -19,12 +19,8 @@ if ($form->isSubmitted()) {
       var_dump($_POST);
       $userData = $form->getUserData($email)[0];
       // ajouter un array avec toutes les infos du man avec une fonction de membre
-      $_SESSION["is_connected"] = true;
-      $_SESSION["is_admin"] = boolval($userData["is_admin"]);
-      $_SESSION["membre_id"] = $userData["id"];
-      $_SESSION["membre_prenom"] = $userData["prenom"];
-      $_SESSION["membre_nom"] = $userData["nom"];
-      $_SESSION["membre_email"] = $userData["email"];
+      $user = new User($email, $mdp, 0);
+      $user->setSession();
       $login->connect();
     } else {
       $message = "Email ou mot de passe incorrect";
@@ -79,7 +75,10 @@ if ($form->isSubmitted()) {
                 }
               } ?></p>
         </div>
-        <div class="button-cont"><button>Se connecter</button></div>
+        <div class="button-cont">
+          <button>Se connecter</button>
+          <a href="./newAccount.php" class="underline">Créer un compte</a>
+        </div>
         <?php
         if (isset($_GET["error"])) :
         ?>

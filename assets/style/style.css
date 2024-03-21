@@ -24,7 +24,10 @@
 	flex-direction: column;
 
 	& header {
-		padding: 2rem 2.65rem;
+		padding: 2rem 2.6rem;
+		position: absolute;
+		top: 0;
+		left: 0;
 	}
 	& header .logo-cont {
 		width: min(60%, 220px);
@@ -46,10 +49,11 @@
 	& .form-cont {
 		width: min(100%, 700px);
 		z-index: 2;
+		margin-block: 6em;
 		margin-left: auto;
 	}
 	& form {
-		padding: 2em 2em 1em;
+		padding: 2em;
 		background-color: #ffffffdf;
 		backdrop-filter: blur(4px);
 		width: min(40ch, 100%);
@@ -57,7 +61,6 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
-		gap: 3em;
 		border-radius: 0.75em;
 		color: var(--color-dark-gray);
 	}
@@ -94,10 +97,15 @@
 	& .field-cont {
 		display: grid;
 		gap: 1em;
+		margin-top: 3rem;
 	}
 	& .button-cont {
 		display: flex;
-		justify-content: center;
+		justify-content: space-between;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 1.5em 2em;
+		margin-top: 1.65rem;
 	}
 	& button {
 		cursor: pointer;
@@ -107,7 +115,6 @@
 		border-radius: 0.5rem;
 		font-size: 1.25rem;
 		padding: 0.7em 1.45em;
-		margin-inline: auto;
 		transition: 0.15s ease-in-out;
 		outline: 3px solid transparent;
 
@@ -119,6 +126,9 @@
 			outline-offset: 3px;
 		}
 	}
+	.data-form-result {
+		margin-top: 1.65rem;
+	}
 	.data-form-result :where(p, label) {
 		color: inherit;
 		font-size: 1rem;
@@ -126,7 +136,6 @@
 	}
 	.data-form-result p {
 		position: relative;
-		top: -1rem;
 		text-align: center;
 	}
 	[data-error] {

@@ -76,7 +76,10 @@ if ($form->isSubmitted()) {
                 }
               } ?></p>
         </div>
-        <div class="button-cont"><button>Créer mon compte</button></div>
+        <div class="button-cont">
+          <button>Créer mon compte</button>
+          <a href="./loginForm.php" class="underline">Se connecter</a>
+        </div>
 
         <?php
         if (isset($_GET["success"])) :

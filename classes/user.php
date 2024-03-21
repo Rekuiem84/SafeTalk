@@ -8,6 +8,8 @@ class User
   private $email;
   private $mdp;
   private $is_admin;
+  private $age;
+  private $school;
 
 
   public function getId()
@@ -30,6 +32,18 @@ class User
   {
     return $this->mdp;
   }
+  public function getIsAdmin()
+  {
+    return $this->is_admin;
+  }
+  public function getAge()
+  {
+    return $this->age;
+  }
+  public function getSchool()
+  {
+    return $this->school;
+  }
 
   public function setNom($nom)
   {
@@ -47,12 +61,29 @@ class User
   {
     $this->mdp = $mdp;
   }
-
-  public function __construct($email, $mdp, $is_admin)
+  public function setIsAdmin($is_admin)
   {
+    $this->is_admin = $is_admin;
+  }
+  public function setAge($age)
+  {
+    $this->age = $age;
+  }
+  public function setSchool($school)
+  {
+    $this->school = $school;
+  }
+
+  public function __construct($email, $mdp, $is_admin, $id = null, $nom = null, $prenom = null, $age = null, $school = null)
+  {
+    $this->id = $id;
+    $this->nom = $nom;
+    $this->prenom = $prenom;
     $this->email = $email;
     $this->mdp = $mdp;
     $this->is_admin = $is_admin;
+    $this->age = $age;
+    $this->school = $school;
   }
 
   // Ajoute un nouveau membre dans la DB
@@ -84,22 +115,40 @@ class User
       $this->prenom = $membre["prenom"];
       $this->email = $membre["email"];
       $this->mdp = $membre["mot_de_passe"];
+      $this->is_admin = $membre["is_admin"];
+      $this->age = $membre["age"];
+      $this->school = $membre["school"];
     }
     return $this;
   }
 
   // Met à jour les informations d'un membre dans la DB
-  public function setMembre($nom, $prenom, $email, $mdp, $id): void
+  public function setMembre($nom, $prenom, $email, $mdp, $id, $age, $school): void
   {
     $_SESSION["membre_prenom"] = $prenom;
     $_SESSION["membre_nom"] = $nom;
     $_SESSION["membre_email"] = $email;
+    $_SESSION["membre_age"] = $age;
+    $_SESSION["membre_school"] = $school;
 
     $co = new Db();
     $db = $co->dbCo("SafeTalk", "root", "root");
 
-    $sql = "UPDATE `user` SET `nom`=?, `prenom`=?, `email`=?, `password`=? WHERE id=?";
-    $param = [$nom, $prenom, $email, $mdp, $id];
+    $sql = "UPDATE `user` SET `nom`=?, `prenom`=?, `email`=?, `password`=?, `age`=?, `school`=?, WHERE id=?";
+    $param = [$nom, $prenom, $email, $mdp, $age, $school, $id];
     $datas = $co->SQLWithParam($sql, $param, $db);
+  }
+
+  // Enregistre les informations du membre dans la session
+  public function setSession(): void
+  {
+    $_SESSION["is_connected"] = true;
+    $_SESSION["is_admin"] = $this->is_admin;
+    $_SESSION["membre_id"] = $this->id;
+    $_SESSION["membre_prenom"] = $this->prenom;
+    $_SESSION["membre_nom"] = $this->nom;
+    $_SESSION["membre_email"] = $this->email;
+    $_SESSION["membre_age"] = $this->age;
+    $_SESSION["membre_school"] = $this->school;
   }
 }
