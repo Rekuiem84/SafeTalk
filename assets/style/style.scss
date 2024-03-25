@@ -1,0 +1,329 @@
+:root {
+	--color-primary: hsl(0, 0%, 100%);
+	--color-secondary: hsl(0, 0, 0);
+	--color-accent-dark: hsl(164, 83%, 28%);
+	--color-accent: hsl(164, 83%, 38%);
+	--color-accent-light: hsl(164, 50%, 80%);
+
+	--font-stack: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+		Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+
+	--font-size-xl: 70px;
+	--font-size-l: 50px;
+	--font-size-ml: 38px;
+	--font-size-m: 30px;
+	--font-size-s: 20px;
+	--font-size-xs: 18px;
+	--font-size-text: 22px;
+}
+/* Nav */
+body {
+	overflow-x: hidden;
+}
+header {
+	background-color: var(--color-accent);
+}
+.nav {
+	max-width: 1620px;
+	margin-inline: auto;
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 1em;
+	background-color: var(--color-accent);
+	color: var(--color-primary);
+	font-size: var(--font-size-s);
+	padding-block: clamp(1em, 3vw, 1.4em);
+	padding-inline: clamp(1.5em, 4.5vw, 2.5em);
+
+	& .logo-cont {
+		width: min(60%, 220px);
+		display: flex;
+	}
+	.nav__list {
+		width: min(100%, 930px);
+		padding-block: 1em;
+		display: flex;
+		gap: 1em;
+		align-items: center;
+		justify-content: space-between;
+		background-color: var(--color-accent);
+		transition: 0.3s ease-in-out;
+	}
+	.nav__item {
+		padding: 0.25em 0.5em;
+		display: block;
+		border-radius: 4px;
+
+		&:focus-visible {
+			outline: 2px solid currentColor;
+		}
+		&:is(:hover, :focus-visible) {
+			text-decoration: underline;
+		}
+
+		& > i {
+			margin-inline: 0.4em;
+			transition: 0.1s ease-out;
+		}
+	}
+	.nav__item--dropdown {
+		position: relative;
+
+		&:is(:hover, :focus-within) > a i {
+			transform: rotate(-90deg);
+			vertical-align: middle;
+		}
+	}
+	& .nav__item--accent {
+		color: var(--color-accent);
+		background-color: var(--color-primary);
+		font-weight: 600;
+		border-radius: 5rem;
+		padding: 0.5em 1.25em;
+	}
+	.nav__dropdown {
+		display: none;
+		flex-direction: column;
+		font-size: inherit;
+		gap: 0.85em;
+		padding: 0.5em;
+		border-radius: 8px;
+		position: absolute;
+		top: 100%;
+		left: -1.5em;
+		background-color: var(--color-accent);
+		color: var(--color-primary);
+		width: max-content;
+		box-shadow: 0 0 6px 2px var(--color-accent-dark);
+
+		& i {
+			margin-left: 0;
+			vertical-align: middle;
+		}
+	}
+
+	& .nav__list:hover .nav__item--dropdown:hover .nav__dropdown,
+	& .nav__item--dropdown:focus-within .nav__dropdown {
+		display: flex;
+	}
+}
+@media (width < 1180px) {
+	.nav {
+		.nav__list {
+			width: min(450px, 100%);
+			position: absolute;
+			top: calc(100% - 1rem);
+			top: 100%;
+			right: 0;
+			translate: 100% 0;
+			flex-direction: column;
+			align-items: flex-start;
+			padding: 1em;
+			border-bottom-left-radius: 8px;
+
+			&.open {
+				translate: 0;
+				box-shadow: 0 0 6px 2px var(--color-accent-dark);
+			}
+		}
+		& .nav__dropdown {
+			display: flex;
+			position: relative;
+			left: 0;
+			top: 0;
+			box-shadow: none;
+			background: transparent;
+		}
+		& .nav__item--dropdown:is(:hover, :focus-within) > a i {
+			transform: none;
+		}
+	}
+	.nav__item--dropdown > a i {
+		display: none;
+	}
+}
+
+/* Menu Burger */
+.burger {
+	width: 60px;
+	aspect-ratio: 1;
+	padding: 8px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 8px;
+	cursor: pointer;
+	z-index: 100;
+}
+.burger__line {
+	height: 5px;
+	width: 100%;
+	background-color: var(--color-primary);
+	border-radius: 50px;
+	position: relative;
+	transition: 0.5s, background-color 0.25s;
+}
+.burger__line::before,
+.burger__line::after {
+	content: "";
+	position: absolute;
+	width: inherit;
+	height: inherit;
+	border-radius: inherit;
+	background-color: var(--color-primary);
+	transition: 0.3s;
+}
+.burger__line::before {
+	top: -12px;
+}
+.burger__line::after {
+	top: 12px;
+}
+.burger.open .burger__line {
+	background-color: transparent;
+}
+.burger.open .burger__line::before {
+	top: 0;
+	rotate: -45deg;
+}
+.burger.open .burger__line::after {
+	top: 0;
+	rotate: 45deg;
+}
+@media (width >= 1180px) {
+	.burger {
+		display: none;
+	}
+}
+
+/* Footer */
+/* Login */
+.registration {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+
+	& header {
+		padding: 2rem 2.6rem;
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+	& header .logo-cont {
+		width: min(60%, 220px);
+	}
+	& main {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap-reverse;
+		margin-block: auto;
+	}
+	& .illustration-cont {
+		width: min(100%, 780px);
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		display: flex;
+		pointer-events: none;
+	}
+	& .form-cont {
+		width: min(100%, 700px);
+		z-index: 2;
+		margin-block: 6em;
+		margin-left: auto;
+	}
+	& form {
+		padding: 2em;
+		background-color: #ffffffdf;
+		backdrop-filter: blur(4px);
+		width: min(40ch, 100%);
+		margin-inline: auto;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		border-radius: 0.75em;
+		color: var(--color-dark-gray);
+	}
+	& h1 {
+		font-size: 2.4rem;
+		font-weight: 700;
+	}
+	& label {
+		cursor: pointer;
+	}
+	& label,
+	& input {
+		font-size: 1.35rem;
+		transition: 0.1s ease-in-out;
+	}
+	& i {
+		color: inherit;
+		font-size: 1.1em;
+		margin-right: 0.85em;
+		vertical-align: text-bottom;
+	}
+	& input {
+		border: 3px solid transparent;
+		border-bottom-color: var(--color-dark-gray);
+		outline: none;
+		background: none;
+	}
+	& input:focus {
+		border-bottom-color: var(--color-accent);
+	}
+	& label:has(~ input:focus) {
+		color: var(--color-accent);
+	}
+	& .field-cont {
+		display: grid;
+		gap: 1em;
+		margin-top: 3rem;
+	}
+	& .button-cont {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 1.5em 2em;
+		margin-top: 1.65rem;
+	}
+	& button {
+		cursor: pointer;
+		background-color: var(--color-accent);
+		color: var(--color-background);
+		border: none;
+		border-radius: 0.5rem;
+		font-size: 1.25rem;
+		padding: 0.7em 1.45em;
+		transition: 0.15s ease-in-out;
+		outline: 3px solid transparent;
+
+		&:is(:hover, :focus-visible) {
+			scale: 1.05;
+		}
+		&:focus-visible {
+			outline: 3px solid var(--color-accent);
+			outline-offset: 3px;
+		}
+	}
+	.data-form-result {
+		margin-top: 1.65rem;
+	}
+	.data-form-result :where(p, label) {
+		color: inherit;
+		font-size: 1rem;
+		cursor: pointer;
+	}
+	.data-form-result p {
+		position: relative;
+		text-align: center;
+	}
+	[data-error] {
+		color: var(--color-error);
+	}
+	[data-success] {
+		color: var(--color-accent);
+	}
+}

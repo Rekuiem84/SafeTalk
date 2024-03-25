@@ -7,12 +7,18 @@
 	padding: 0;
 }
 body {
-	font-family: var(--font-stack);
+	font-family: "sofia-pro-soft", var(--font-stack);
 	min-height: 100vh;
 	min-height: 100dvh;
 }
+
+body::-webkit-scrollbar {
+	display: none;
+}
+
 img,
 svg {
+	width: 100%;
 	max-width: 100%;
 }
 ul {
