@@ -1,6 +1,6 @@
 # SafeTalk
 
-## Landing page d'un média d'information pour le cyberharcèlement
+## Landing page d'un média d'information sur le cyberharcèlement
 
 Réalisé à l'occasion de mes deuxièmes partiels de deuxième année (mars 2023).
 
