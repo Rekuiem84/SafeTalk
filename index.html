@@ -10,7 +10,7 @@
     content="SafeTalk lutte contre le cyberharcèlement. Offrant signalement, prévention et soutien, notre app vous protège en ligne. Téléchargez pour une sécurité accrue.">
   <link rel='stylesheet' href='./assets/style/general.css' />
   <link rel='stylesheet' href='./assets/style/style.css' />
-  <link rel='shortcut icon' type='image/png' href='./assets/images/logo.png' />
+  <link rel='shortcut icon' type='image/png' href='./assets/images/logo.svg' />
   <script src="./assets/script/script.js" defer></script>
   <!-- Icones -->
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -22,6 +22,9 @@
   <header>
     <nav class="nav">
       <div class="logo-cont"><img src="./assets/images/logo-long-blanc.svg" alt="logo de SafeTalk"></div>
+      <div class="burger">
+        <div class="burger__line"></div>
+      </div>
       <ul class="nav__list">
         <li><a href="#" class="nav__item">Qu'est ce que le harcèlement&nbsp;?</a></li>
         <li class="nav__item--dropdown">
@@ -37,14 +40,84 @@
         <li><a href="#" class="nav__item">Qui sommes-nous&nbsp;?</a></li>
         <li><a href="#" class="nav__item  nav__item--accent">Aller vers l'app</a></li>
       </ul>
-      <div class="burger">
-        <div class="burger__line"></div>
-      </div>
+
     </nav>
   </header>
-  <!--<main>
-
-    <section id="temoin">
+  <main>
+    <section class="hero">
+      <h1>SafeTalk - Sensibilisation au cyberharcèlement pour les jeunes</h1>
+      <p>Soyez prêt à faire face au cyberharcèlement avec SafeTalk. Notre application vous offre les outils nécessaires
+        pour
+        signaler, prévenir et contrer le harcèlement en ligne, créant ainsi un espace sécurisé pour tous les
+        utilisateurs.
+        Profitez dès maintenant d'une expérience en ligne plus sûre et plus saine.</p>
+      <a href="">En savoir plus</a>
+      <img src="./assets/images/introduction.webp" alt="harcèlement d'un élève">
+    </section>
+    <section class="bandeau">
+      <div>
+        <p>37%</p>
+        <div></div>
+        <p>12-17 ans ont été victime au moins 1fois</p>
+      </div>
+      <div>
+        <p>12%</p>
+        <div></div>
+        <p>ont déja intimidé sur le web</p>
+      </div>
+      <div>
+        <p>71%</p>
+        <div></div>
+        <p>harcelé À cause de L’apparence</p>
+      </div>
+      <div>
+        <p>70%</p>
+        <div></div>
+        <p>en sont victimes avant 18 ans</p>
+      </div>
+    </section>
+    <section class="cyberharcelement">
+      <h2>Qu'est-ce que le cyberharcèlement ?</h2>
+      <p>Le cyberharcèlement, également connu sous les termes de harcèlement internet ou de harcèlement numérique, est
+        une forme d'agression qui se déroule en ligne à travers divers canaux numériques tels que les réseaux sociaux,
+        les messages, les forums de discussion et les jeux en ligne. Il se caractérise par des comportements répétitifs
+        et malveillants visant à intimider, humilier, menacer ou nuire à une personne ou à un groupe de personnes.</p>
+      <p>Le cyberharcèlement peut prendre de nombreuses formes, telles que l'envoi de messages offensants, la diffusion
+        de fausses rumeurs, la création de faux profils pour diffuser des contenus nuisibles, ou encore la manipulation
+        de photos ou de vidéos dans le but de dénigrer une personne. Cette forme de harcèlement peut avoir de graves
+        répercussions sur la santé mentale, le bien-être émotionnel et la réputation des victimes, nécessitant ainsi une
+        action concertée pour prévenir et combattre ce phénomène croissant.</p>
+    </section>
+    <section class="aide">
+      <h2>Besoin d'aide ?</h2>
+      <div class="cards-cont">
+        <div class="card">
+          <div class="img-cont"><img src="" alt=""></div>
+          <div class="content-cont">
+            <p class="numero">119</p>
+            <h3>Enfants et ados en danger</h3>
+            <a href="#">En savoir plus</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="img-cont"><img src="" alt=""></div>
+          <div class="content-cont">
+            <p class="numero">119</p>
+            <h3>Enfants et ados en danger</h3>
+            <a href="#">En savoir plus</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="img-cont"><img src="" alt=""></div>
+          <div class="content-cont">
+            <p class="numero">119</p>
+            <h3>Enfants et ados en danger</h3>
+            <a href="#">En savoir plus</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="temoin">
       <div class="content-cont">
         <h2>Je suis témoin d'un cyberharcèlement, que faire ?</h2>
         <h3>Que faire ?</h3>
@@ -69,10 +142,10 @@
         </ul>
       </div>
       <div class="video-cont">
-        <video src="./ressources/video-1.mov" controls loading="lazy"></video>
+        <video src="" controls loading="lazy"></video>
       </div>
     </section>
-    <section id="application" class="green">
+    <section class="application green">
       <h2>À quoi sert l'application SafeTalk ?</h2>
       <div class="content-cont">
         <div>
@@ -82,10 +155,10 @@
             essentiel.
           </p>
           <a href="#">En savoir plus</a>
-          <div class="image-cont"><img src="./ressources/maquette-phone-1.webp" alt="application SafeTalk"></div>
+          <div class="image-cont"><img src="./assets/images/maquette-phone-1.webp" alt="application SafeTalk"></div>
         </div>
         <div>
-          <div class="image-cont"><img src="./ressources/maquette-phone-2.webp" alt="application SafeTalk"></div>
+          <div class="image-cont"><img src="./assets/images/maquette-phone-2.webp" alt="application SafeTalk"></div>
           <h3>Combattre le cyberharcèlement chez les jeunes</h3>
           <p>SafeTalk, une webapp, aide les jeunes de 10 à 18 ans à identifier s’ils sont victimes, harceleurs ou
             témoins de cyberharcèlement grâce à un questionnaire. Les harceleurs et les témoins sont orientés vers un
@@ -95,9 +168,103 @@
         </div>
       </div>
     </section>
-  </main>-->
+    <section class="qui-sommes-nous">
+      <div class="content-cont">
+        <h2>Qui sommes-nous ?</h2>
+        <p>Nous sommes une équipe passionnée, dédiée à créer un environnement en ligne sûr et bienveillant pour tous.
+          Forts de notre engagement à lutter contre le cyberharcèlement, nous avons mis place une application innovante
+          qui offre des solutions concrètes pour contrer cette menace croissante.</p>
+        <p>Notre équipe est composée d'experts en technologie, en psychologie et en sécurité en ligne, tous unis dans le
+          but de protéger les utilisateurs contre les dangers du monde numérique. Nous croyons fermement que chaque être
+          humain a le droit de naviguer sur Internet sans crainte ni intimidation, et c'est cette conviction qui guide
+          chacune de nos actions.</p>
+      </div>
+      <div class="img-cont"><img src="" alt="">Voir notre équipe</div>
+    </section>
+    <section class="equipe">
+      <h2>Notre équipe</h2>
+      <p>Membres de l'équipe</p>
+      <div class="membres-cont">
+        <div>
+          <img src="" alt="membre de l'équipe">
+          <div>
+            <p class="membre-nom">Axelle</p>
+            <p class="membre-role">Créatrice de contenu</p>
+          </div>
+          <div class="socials-cont"><i>Twitter</i></div>
+        </div>
+        <div>
+          <img src="" alt="membre de l'équipe">
+          <div>
+            <p class="membre-nom">Josh</p>
+            <p class="membre-role">Développeur</p>
+          </div>
+          <div class="socials-cont"><i>Github</i></div>
+        </div>
+        <div>
+          <img src="" alt="membre de l'équipe">
+          <div>
+            <p class="membre-nom">Mathis</p>
+            <p class="membre-role">Chef de projet</p>
+          </div>
+          <div class="socials-cont"><i>Linkedin</i></div>
+        </div>
+        <div>
+          <img src="" alt="membre de l'équipe">
+          <div>
+            <p class="membre-nom">Léon</p>
+            <p class="membre-role">Graphiste</p>
+          </div>
+          <div class="socials-cont"><i>Instagram</i></div>
+        </div>
+        <div>
+          <img src="" alt="membre de l'équipe">
+          <div>
+            <p class="membre-nom">Lilia</p>
+            <p class="membre-role">Responsable marketing</p>
+          </div>
+          <div class="socials-cont"><i>Youtube</i></div>
+        </div>
+      </div>
+    </section>
+    <section class="questionnaire">
+      <div>
+        <p>Cliquez sur le bouton suivant et répondez à notre questionnaire</p>
+        <a href="">Aller vers l'app</a>
+      </div>
+    </section>
+  </main>
   <footer>
-
+    <div><img src="" alt=""></div>
+    <div>
+      <p class="footer-title">Réseaux sociaux</p>
+      <ul class="footer-list">
+        <li><a href="">Instagram</a></li>
+        <li><a href="">Tiktok</a></li>
+        <li><a href="">Youtube</a></li>
+        <li><a href="">Facebook</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-title">Liens rapides</p>
+      <ul class="footer-list">
+        <li><a href="">Acueil</a></li>
+        <li><a href="">Qu'est-ce que le cyberharcèlement ?</a></li>
+        <li><a href="">Besoin d'aide ?</a></li>
+        <li><a href="">Témoin de cyberharcèlement ?</a></li>
+        <li><a href="">À quoi sert l'application ?</a></li>
+        <li><a href="">Notre application</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-title">Autres pages</p>
+      <ul class="footer-list">
+        <li><a href="">Politique de confidentialité</a></li>
+        <li><a href="">Mentions légales</a></li>
+        <li><a href="">Gestion des cookies</a></li>
+        <li><a href="">Aide</a></li>
+      </ul>
+    </div>
   </footer>
 </body>
 
